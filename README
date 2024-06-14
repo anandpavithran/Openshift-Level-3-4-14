@@ -1,0 +1,53 @@
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  Mapping between GE and GE command files  
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Note: No command set for Final labs and GE based on Webconsole
+
+CHAPTER-1
+#########
+Guided Exercise: LDAP Authentication and Group Synchronization - NIL
+Guided Exercise: Automate LDAP Group Synchronization - ge1-2.cmd
+OIDC Authentication and Group Claims - ge1-3.cmd
+Solve User Sync Conflicts - ge1-4.cmd
+Token and Client Certificate Authentication with kubeconfig Files - ge1-5.cmd 
+=======================================================================
+CHAPTER-2
+#########
+Export and Import Application Data and Settings - ge2-1.cmd
+OADP Operator Deployment and Features - ge2-2.cmd 
+Backup and Restore with OADP - ge2-3.cmd
+======================================================================
+CHAPTER-3
+#########
+Node Configuration with the Machine Configuration Operator
+Node Configuration with Special Purpose Operators
+======================================================================
+CHAPTER-4
+#########
+Node Selectors and Taints
+High Availability with Affinity Rules and Pod Disruption Budgets
+======================================================================
+CHAPTER-5
+#########
+GitOps for Cluster Administration
+GitOps for Application Management
+======================================================================
+CHAPTER-6
+#########
+Cluster Monitoring
+Alerts and Notifications
+======================================================================
+CHAPTER-7
+#########
+Log Forwarding
+Centralized Logging
+======================================================================
+
+HOW TO EXECUTE
+%%%%%%%%%%%%%%
+Step-1 Login as student user in workstation.
+Step-2 git clone https://github.com/anandpavithran/DO380-4.14
+Step-3 cd /home/student/DO380-4.14
+Step-4 ./gluft *.cmd
+       Example: ./gluft ge2-1.cmd
