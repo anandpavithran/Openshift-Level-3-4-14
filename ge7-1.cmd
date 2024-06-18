@@ -40,7 +40,7 @@ Execute next command--->see the output--->CTLR+C
 
 Execute in utility as root tail -f /var/log/openshift/infra.log | egrep -o "\{.*}$" | jq '. | select(.kubernetes.namespace_name == "openshift-storage")| .kubernetes.pod_name + " " + .message'
 
-Execute in utility as root tail -f /var/log/openshift/audit.log | egrep -o "\{.*}$" | jq -c '.|select(.user.username == "developer")| [.user.username, .annotations, .verb, .objectRef]''
+Execute in utility as root tail -f /var/log/openshift/audit.log | egrep -o "\{.*}$" | jq -c '.|select(.user.username == "developer")| [.user.username, .annotations, .verb, .objectRef]'
 
 Execute next command here --->Login ,create project[oc login -u developer -p developer https://api.ocp4.example.com:6443 ,oc new-project logger-app] in another terminal-->see--CTRL+c
 
