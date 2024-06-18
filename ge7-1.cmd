@@ -24,7 +24,7 @@ Execute next command here --->Login ,create project[oc login -u developer -p dev
 Execute in utility as root  tail -f /var/log/openshift/infra.log | egrep -o "\{.*}$" | jq -c '.| select(.kubernetes.event.involvedObject.namespace == "logger-app")| [.kubernetes.event.involvedObject.kind,.kubernetes.event.involvedObject.name, .message]'
 Execute next command --->Execute [oc apply -f ~/DO380/labs/logging-forward/logger.yml] in another terminal-->CTRL+c
 Execute in utility as root  grep -m1 shop-web /var/log/openshift/apps.log | egrep -o "\{.*}" | jq
-ssh root@utility 'grep logger-app /var/log/openshift/apps.log'
+Execute in utility as  root grep logger-app /var/log/openshift/apps.log
 oc login -u admin -p redhatocp https://api.ocp4.example.com:6443
 oc delete project logger-app
 oc -n openshift-logging delete clusterlogging,clusterlogforwarder --all
