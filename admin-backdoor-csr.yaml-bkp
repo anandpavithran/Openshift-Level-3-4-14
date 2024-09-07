@@ -1,0 +1,10 @@
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: admin-backdoor-access
+spec:
+  signerName: kubernetes.io/kube-apiserver-client
+  expirationSeconds: 31536000 # one year
+  request: #Execute and replace$(base64 -w0 /home/student/DO380/labs/auth-tls/admin-cert/admin-backdoor-auth.csr)
+  usages:
+  - client auth

@@ -20,9 +20,9 @@ Wait for few minutes cat /tmp/cluster.log
 oc adm groups new backdoor-administrators
 oc adm policy add-cluster-role-to-group cluster-admin backdoor-administrators
 mkdir ~/DO380/labs/auth-tls/admin-cert
-openssl req -newkey rsa:4096 -nodes -keyout tls.key -subj "/O=backdoor-administrators/CN=admin-backdoor" -out ~/DO380/labs/auth-tls/admin-cert/admin-backdoor-auth.csr
-cat << EOF >> ~/DO380/labs/auth-tls/admin-cert/admin-backdoor-csr.yaml
-oc create -f ~/DO380/labs/auth-tls/admin-cert/admin-backdoor-csr.yaml
+openssl req -newkey rsa:4096 -nodes -keyout  /home/student/DO380/labs/auth-tls/tls.key -subj "/O=backdoor-administrators/CN=admin-backdoor" -out ~/DO380/labs/auth-tls/admin-cert/admin-backdoor-auth.csr
+cat admin-backdoor-csr.yaml # Change "request" line# use the command in admin-backdoor-cs.yaml-bkp
+oc create -f admin-backdoor-csr.yaml
 oc get csr admin-backdoor-access
 oc adm certificate approve admin-backdoor-access
 oc get csr admin-backdoor-access
