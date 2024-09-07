@@ -13,8 +13,8 @@ ON SSO /opt/rh-sso-7.6/bin/kcadm.sh get clients/f57e9ddc-8c60-4b40-8048-ec012059
 ON SSO cat rhsso.json
 oc login -u admin -p redhatocp https://api.ocp4.example.com:6443
 oc create secret generic rhsso-oidc-client-secret --from-literal clientSecret=FILLSECRET-taken-from-SSO -n openshift-config
-vi /home/student/DO380/labs/auth-oidc/sso_config.yml
-oc apply -f ~/DO380/labs/auth-oidc/sso_config.yml
+vi sso_config.yml
+oc apply -f sso_config.yml
 oc get pods -n openshift-authentication #wait
 oc get pods -n openshift-authentication #wait
 oc get pods -n openshift-authentication #wait
@@ -23,6 +23,7 @@ oc run ubi9-date --restart 'Never' --image registry.ocp4.example.com:8443/ubi9/u
 oc get pods
 oc get users
 oc login -u admin -p redhatocp
+oc get users
 oc get groups
 oc login -u jayalamont -p redhat_sso
 oc get pod
@@ -50,7 +51,7 @@ WAIT IN FIREFOX until OpenShift automatically logs out the user.
 oc get users
 oc delete user fricisritcher
 oc delete identity id-taken-from-get user-command
-
+lab finish auth-oidc
 
 
 
