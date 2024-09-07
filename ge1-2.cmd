@@ -7,10 +7,10 @@ oc create sa rhds-group-syncer
 oc create clusterrole rhds-group-syncer --verb get,list,create,update --resource groups
 oc adm policy add-cluster-role-to-user rhds-group-syncer -z rhds-group-syncer
 oc create secret generic rhds-secret --from-literal bindPassword='redhatocp'
-vim ~/DO380/labs/auth-sync/sync/rhds-sync.yaml
-oc create configmap rhds-config --from-file rhds-sync.yaml=~/DO380/labs/auth-sync/sync/rhds-sync.yaml,ca.crt=~/DO380/labs/auth-sync/sync/rhds_ca.crt
-vim ~/DO380/labs/auth-sync/sync/rhds-groups-cronjob.yaml
-oc create -f ~/DO380/labs/auth-sync/sync/rhds-groups-cronjob.yaml
+vim rhds-sync.yaml
+oc create configmap rhds-config --from-file rhds-sync.yaml=rhds-sync.yaml,ca.crt=/home/student/DO380/labs/auth-sync/sync/rhds_ca.crt
+vim rhds-groups-cronjob.yaml
+oc create -f rhds-groups-cronjob.yaml
 oc get groups
 oc adm policy add-cluster-role-to-group cluster-admin administrators
 oc login -u kristendelgado -p redhat123
