@@ -8,10 +8,11 @@ vim backup-db-manual.yml
 oc apply -f backup-db-manual.yml
 cat velero
 sudo cp velero /usr/local/bin/
+Execute below comand in other terminal
 alias velero='oc -n openshift-adp exec deployment/velero -c velero -it -- ./velero' Show by othermethod
 #EXECUTE VELERO COMMAND IN OTHER TERMINAL
 #velero get backup db-manual
-oc exec -c mariadb deploy/mariadb -- bash -c 'mariadb -u ${MARIADB_USER} -p"${MARIADB_PASSWORD}" ${MARIADB_DATABASE} -te "select * from application_logs where time <= \"REPLACETIME\" order by id desc LIMIT 5;"
+oc exec -c mariadb deploy/mariadb -- bash -c 'mariadb -u ${MARIADB_USER} -p"${MARIADB_PASSWORD}" ${MARIADB_DATABASE} -te "select * from application_logs where time <= \"REPLACETIME\" order by id desc LIMIT 5;"'
 vi restore-db-crash.yml
 oc apply -f restore-db-crash.yml
 #velero get restore db-crash
@@ -20,11 +21,11 @@ oc get pvc,svc,deployment,secret,configmap -l app=mariadb
 oc get namespace database-crash -oyaml
 oc exec -c mariadb deploy/mariadb -- bash -c 'mariadb-check -u root -p"${MARIADB_ROOT_PASSWORD}" -A --auto-repair'
 sh /home/student/DO380/labs/backup-restore/view-db.sh
-s3cmd la -r ~/DO380/labs/backup-restore
+s3cmd la -r 
 #velero delete backup db-manual
 #velero get backup db-manual
 oc -n openshift-adp get backup,restore
-s3cmd la -r ~/DO380/labs/backup-restore
+s3cmd la -r 
 s3cmd ls
 s3cmd la -r
 vi schedule-db-backup.yml

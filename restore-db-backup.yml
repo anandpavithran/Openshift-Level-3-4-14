@@ -4,7 +4,7 @@ metadata:
   name: db-backup
   namespace: openshift-adp
 spec:
-  backupName: db-backup-20240908063737
+  backupName: db-backup-20240908102016
   restorePVs: true
   namespaceMapping:
     database: database-backup
