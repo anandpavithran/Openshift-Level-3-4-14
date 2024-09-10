@@ -17,16 +17,15 @@ s3cmd la
 vim ~/DO380/labs/backup-oadp/dpa-backup.yml 
 vim ~/DO380/labs/backup-oadp/cloud-credentials 
 oc create secret generic cloud-credentials -n openshift-adp --from-file cloud=~/DO380/labs/backup-oadp/cloud-credentials 
-#oc create secret generic restic-enc-key -n openshift-adp --from-literal=RESTIC_PASSWORD=$(openssl rand -base64 24)
+
 oc apply -f ~/DO380/labs/backup-oadp/dpa-backup.yml
-oc get deploy -n openshift-adp
-oc apply -f ~/DO380/labs/backup-oadp/dpa-backup.yml 
+oc get deploy,daemonset -n openshift-adp
+
 oc get dpa
-oc get backupStorageLocation
-oc get deploy -n openshift-adp
-oc get backupStorageLocation
+oc get BackupStorageLocation
+
 oc get volumesnapshotclass
-#for class in  $(oc get volumesnapshotclass -oname); do oc patch $class --type=merge -p '{"deletionPolicy": "Retain"}';done
+
 oc label volumesnapshotclass velero.io/csi-volumesnapshot-class="true" --all
 vim ~/DO380/labs/backup-oadp/backup.yml
 oc apply -f  ~/DO380/labs/backup-oadp/backup.yml
