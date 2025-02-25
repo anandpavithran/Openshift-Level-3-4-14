@@ -7,7 +7,7 @@ oc create configmap -n openshift-gitops cluster-root-ca-bundle
 oc label configmap -n openshift-gitops cluster-root-ca-bundle config.openshift.io/inject-trusted-cabundle=true
 oc edit argocd -n openshift-gitops openshift-gitops # Add details
 Login https://git.ocp4.example.com as developer user with d3v3lop3r--->Newproject-->CReate blank project-->reponame[gitops-admin]-->Publicvisibility-->all default-->CReate project-->Clone-->https://git.ocp4.example.com/developer/gitops-admin.git
-git clone -C ~/DO380/labs/gitops-admin https://git.ocp4.example.com/developer/gitops-admin.git
+git clone  https://git.ocp4.example.com/developer/gitops-admin.git #to directory DO380/labs/labs/gitops-admin
 cp ~/DO380/labs/gitops-admin/operator.yaml ~/DO380/labs/gitops-admin/gitops-admin/operator.yaml
 vi ~/DO380/labs/gitops-admin/gitops-admin/operator.yaml #Add to lines below  annotationargocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true argocd.argoproj.io/sync-wave: "1"
 git add ~/DO380/labs/gitops-admin/gitops-admin/operator.yaml
